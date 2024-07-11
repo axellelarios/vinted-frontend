@@ -60,7 +60,9 @@ const Offer = () => {
                                 );
                             })}  
                         </div>                       
-                        
+                        <div className="description_container">
+                            <div className="title">{offer.product_name}</div>
+                        </div>                       
                     </div>                  
                 </div>
             </div>
