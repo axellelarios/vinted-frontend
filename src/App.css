@@ -91,6 +91,7 @@ a {
 .header__search {
     flex: 2;
     position: relative;
+    order: 3;
 }
 
 .header__search svg{
@@ -142,6 +143,27 @@ a {
     background-size: 100% .1rem, 100% .1rem;
 }
 
+@media screen and (max-width: 1000px) {
+    .header__logo {
+        min-width: 90px;
+    }    
+    .container {
+        padding: 0 10px;
+    }   
+    .header {
+        flex-wrap: wrap;
+    }
+    .header__search {
+        order: 3;
+    } 
+    .header__search, .header__logo, .header__right {
+        flex: unset;
+    } 
+    .header__right .button.button-primary, .header__right .button.button-secondary {
+        font-size: 12px;
+    }
+}
+
 
 /*** HERO **/
 
@@ -167,6 +189,16 @@ a {
     right: 0;
     width: 45%;
     height: 50px;
+}
+
+@media screen and (max-width: 768px) {
+    .hero {
+        max-height: 260px;
+        height: 460px;
+    }
+    .hero .hero-overlay {
+        width: 100%;
+    }
 }
 
 /*** OFFERS HOMEPAGE **/
@@ -215,6 +247,19 @@ a {
 .price_inc {
     color : #007782;
     font-size: 19px;
+}
+
+@media screen and (max-width: 1000px) {
+    .offer-wrapper {
+        width: 33%;
+        padding: 0 2px 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .offer-wrapper {
+        width: 50%;
+    }
 }
 
 /*** OFFER PAGE **/

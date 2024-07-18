@@ -31,7 +31,7 @@ function Header({logo, setSearch, search}) {
   return (
     <header>
         <div className="container u-flexbox u-align-items-center">
-          <div className="u-flexbox u-align-items-center u-fill-width u-justify-content-space-between">
+          <div className="header u-flexbox u-align-items-center u-fill-width u-justify-content-space-between">
                 <div className="header__logo">
                         <Link className="u-block" to="/" title="Vinted logo">
                             <img src={logo} />
