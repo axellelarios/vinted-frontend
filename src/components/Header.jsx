@@ -43,14 +43,14 @@ function Header({logo, setSearch, search}) {
                 </form>  
                 <div className="header__right u-flexbox u-align-items-center u-justify-content-end">
                         <a href="/" title="S'incrire" className="button button-secondary">
-                            S'inscrire
-                        </a>
-                        <a href="/" title="S'incrire" className="button button-secondary">
-                            Se connecter
-                        </a>   
-                        <a href="/" title="S'incrire" className="button button-primary">
+                            S'inscrire / Se connecter
+                        </a>  
+                        <a href="/" title="S'incrire" className="button button-primary hidden-small">
                             Vends tes articles
-                        </a>                  
+                        </a>  
+                        <a href="/" title="S'incrire" className="hidden-tab-and-up button button-primary">
+                            Vendre
+                        </a>                                  
                 </div>  
           </div>          
         </div>

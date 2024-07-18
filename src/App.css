@@ -91,7 +91,6 @@ a {
 .header__search {
     flex: 2;
     position: relative;
-    order: 3;
 }
 
 .header__search svg{
@@ -143,15 +142,17 @@ a {
     background-size: 100% .1rem, 100% .1rem;
 }
 
-@media screen and (max-width: 1000px) {
+@media only screen and  (max-width: 1000px) {
     .header__logo {
-        min-width: 90px;
+        min-width: unset;
+        max-width: 60px;
     }    
     .container {
         padding: 0 10px;
     }   
     .header {
         flex-wrap: wrap;
+        gap: 5px;
     }
     .header__search {
         order: 3;
@@ -162,8 +163,24 @@ a {
     .header__right .button.button-primary, .header__right .button.button-secondary {
         font-size: 12px;
     }
+    .header__right {
+        width: 80%;
+        gap: 5px;
+        text-align: center;
+    }
 }
 
+@media only screen and  (max-width: 400px) {
+    .header__right {
+        width: 60%;
+    }
+    .header__search svg {
+        left: 8px;
+    }   
+    .header__search input {
+        padding: 10px 20px 10px 30px;
+    }   
+}
 
 /*** HERO **/
 
@@ -191,14 +208,16 @@ a {
     height: 50px;
 }
 
-@media screen and (max-width: 768px) {
+@media only screen and  (max-width: 768px) {
     .hero {
         max-height: 260px;
-        height: 460px;
+        height: 260px;
+        margin-bottom: 20px;
     }
     .hero .hero-overlay {
         width: 100%;
     }
+
 }
 
 /*** OFFERS HOMEPAGE **/
@@ -249,14 +268,14 @@ a {
     font-size: 19px;
 }
 
-@media screen and (max-width: 1000px) {
+@media only screen and  (max-width: 1000px) {
     .offer-wrapper {
         width: 33%;
         padding: 0 2px 0;
     }
 }
 
-@media screen and (max-width: 768px) {
+@media only screen and  (max-width: 768px) {
     .offer-wrapper {
         width: 50%;
     }
@@ -299,4 +318,17 @@ a {
     width: 29%;
     background-color: white;
     padding: 20px;
+}
+
+
+@media only screen and  (min-width: 768px) {
+    .hidden-tab-and-up {
+        display: none!important;
+    }
+}
+
+@media only screen and  (max-width: 768px) {
+    .hidden-small {
+        display: none!important;
+    }
 }
