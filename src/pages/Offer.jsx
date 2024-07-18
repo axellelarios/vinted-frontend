@@ -14,7 +14,6 @@ const Offer = () => {
                 const response = await axios.get(
                 `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
                 );
-                console.log(response.data)
                 // On envoie les données à note state SetOffer
                 setOffer(response.data); 
             } catch (error) {
@@ -25,7 +24,6 @@ const Offer = () => {
         fetchData();
     }, []);
 
-    console.log(offer)
     return isLoading ? (
         <main className="loading">
            <div className="container u-flexbox u-align-items-center u-justify-content-center">Chargement...</div>
@@ -48,6 +46,7 @@ const Offer = () => {
                         </div>
                         <div className="description_container">
                             {offer.product_details.filter(Boolean).map((detail, index) => {
+                                // On vient chercher les noms de clés
                                 const keys = Object.keys(detail);
                                 const key = keys[0];
                                 return (

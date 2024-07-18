@@ -17,10 +17,6 @@ header {
     padding: 10px 0;
 }
 
-main {
-    padding: 40px 0;
-}
-
 main.loading .container {
     min-height: 80vh;
 }
@@ -85,6 +81,7 @@ a {
 
 .header__right {
     flex: 2;
+    gap: 16px;
 }
 
 .header__logo img {
@@ -93,6 +90,13 @@ a {
 
 .header__search {
     flex: 2;
+    position: relative;
+}
+
+.header__search svg{
+    position: absolute;
+    left: 15px;
+    
 }
 
 .header__search input {
@@ -100,8 +104,69 @@ a {
     width: 100%;
     border-radius: 5px;
     border: 1px solid #f2f2f2;
-    padding: 0 20px;
+    padding: 10px 20px 10px 42px;
     background-color: #f2f2f2;
+}
+
+.header__right .button.button-primary {
+    color: white;
+    font-family: V-Inter, Helvetica Neue, Helvetica-Neue, Arial, sans-serif;
+    font-size: 14px;
+    background-color: #007782;
+    font-weight: 375;
+    height: 33px;
+    line-height: 20px;
+    padding: 0 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+}
+
+.header__right .button.button-secondary {
+    color: #007782;
+    font-size: 14px;
+    background-color: transparent;
+    background-image: linear-gradient(to top, rgb(000, 117, 129) 0px 0px), linear-gradient(to top, transparent 0px, transparent 0px);
+    background-repeat: no-repeat;
+    background-position: right bottom, right bottom;
+    background-size: 0% .1rem, 100% .1rem;
+    transition-property: background-size;
+    transition-timing-function: ease;
+    transition-duration: .25s;    
+    padding-bottom: 4px;
+}
+
+.header__right .button.button-secondary:hover {
+    background-position: left bottom, left bottom;
+    background-size: 100% .1rem, 100% .1rem;
+}
+
+
+/*** HERO **/
+
+.hero {
+    max-height: 450px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 40px;
+    height: 450px
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+}
+
+.hero .hero-overlay {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    right: 0;
+    width: 45%;
+    height: 50px;
 }
 
 /*** OFFERS HOMEPAGE **/

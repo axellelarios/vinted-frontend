@@ -1,9 +1,16 @@
+
+// IMPORT PACKAGES
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+
+// IMPORT COMPOSANTS
 import Offers from "../components/Offers"
+import Filters from "../components/Filters"
+// IMPORT ASSETS
+import banner from '../assets/banner.jpg'
+import tear from '../assets/tear.f7439053.svg' 
 
-
-function Home() {
+function Home({ search, setSearch}) {
     // On initialise data comme null
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -33,10 +40,14 @@ function Home() {
     ): (
         <main className="home-section">
             <section className="hero">
-              <div className="container">
-                
-              </div>
+                <div>
+                    <img src={banner} />
+                </div>
+                <div className="hero-overlay">
+                    <img src={tear} />
+                </div>                
             </section>
+            <Filters search={search} setSeach={setSearch} />
             <section className="offers">
               <div className="container">
                   <div className="offers-content u-flexbox u-flex-wrap">

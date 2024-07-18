@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 export default function OfferCard ({offer}) {
-        console.log(offer)
         return (
                 <Link className="card-item" to={`/offer/${offer._id}`}>
                     <div className="card-header u-flexbox u-align-items-center">
