@@ -6,9 +6,9 @@ const Filters = ({search, setSearch}) => {
 
   const Step = 1;
   const Min = 0;
-  const Max = 500;
+  const Max = 200;
 
-  const [values, setValues] = useState([10, 100]);
+  const [values, setValues] = useState([25, 100]);
 
   console.log(search)
 
