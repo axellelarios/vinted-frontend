@@ -10,7 +10,7 @@ import Filters from "../components/Filters"
 import banner from '../assets/banner.jpg'
 import tear from '../assets/tear.f7439053.svg' 
 
-function Home({ search, setSearch}) {
+function Home({ price, setPrice}) {
     // On initialise data comme null
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -47,7 +47,7 @@ function Home({ search, setSearch}) {
                     <img src={tear} />
                 </div>                
             </section>
-            <Filters search={search} setSeach={setSearch} />
+            <Filters price={price} setPrice={setPrice} />
             <section className="offers">
               <div className="container">
                   <div className="offers-content u-flexbox u-flex-wrap">
