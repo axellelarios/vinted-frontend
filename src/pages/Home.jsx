@@ -22,7 +22,7 @@ function Home({ price, setPrice, search, setSearch, priceOrder, setPriceOrder}) 
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}`
+            `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${price[0]}&priceMax=${price[1]}`
           );
           // On envoie les données à note state SetData
           setData(response.data); 
@@ -33,7 +33,7 @@ function Home({ price, setPrice, search, setSearch, priceOrder, setPriceOrder}) 
         setIsLoading(false);    
       };
       fetchData();
-    }, [price, search, priceOrder]);
+    }, [price, search, priceOrder]); 
 
     return isLoading ? (
        <main className="loading">
