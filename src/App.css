@@ -269,7 +269,6 @@ h1 {
     .hero .hero-overlay {
         width: 100%;
     }
-
 }
 
 /*** OFFERS HOMEPAGE **/
@@ -344,6 +343,26 @@ h1 {
 
 .filters-wrapper > div {
     flex: 1;
+}
+
+.filters-wrapper .filter-main > div {
+    height: 36px;
+    display: flex;
+    width: 100%;
+}
+
+@media only screen and  (max-width: 768px) {
+    .filters-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    .filters-wrapper .filter-main > div {
+        display: inline-flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 75%;
+        max-width: 100%;
+    }
 }
 
 /*** OFFER PAGE **/

@@ -15,12 +15,11 @@ function Home({ price, setPrice, search, setSearch, priceOrder, setPriceOrder}) 
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
-    console.log(price[0])
-
     // On appelle un state UseEffect pour qu'a la création de home, on va chercher les données via axios
     useEffect(() => {
       const fetchData = async () => {
         try {
+          // On appelle notre requete avec les filtres
           const response = await axios.get(
             `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${price[0]}&priceMax=${price[1]}`
           );
@@ -33,6 +32,7 @@ function Home({ price, setPrice, search, setSearch, priceOrder, setPriceOrder}) 
         setIsLoading(false);    
       };
       fetchData();
+       // on oublie pas de mettre nos dépendances pour que Useeffect garde un oeil sur leur changement
     }, [price, search, priceOrder]); 
 
     return isLoading ? (

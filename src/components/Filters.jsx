@@ -23,6 +23,7 @@ const Filters = ({price, setPrice}) => {
           <div className="filters-left">
             <span>Prix entre : </span> 
             <div
+              className="filter-main"
               style={{
                 display: "inline-flex",
                 justifyContent: "center",
@@ -40,13 +41,12 @@ const Filters = ({price, setPrice}) => {
                 renderTrack={({ props, children }) => (
                   <div
                     onMouseUp={handleMouseUp} 
-                    onMouseDown={props.onMouseDown}
-                    onTouchStart={props.onTouchStart}
+                    onMouseDown={handleMouseUp}
+                    onTouchStart={handleMouseUp}
                     style={{
                       ...props.style,
                       height: "36px",
                       display: "flex",
-                      width: "100%"
                     }}
                   >
                     <div
