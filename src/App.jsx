@@ -31,14 +31,14 @@ function App() {
 
   // Creation d'un state pour ma barre de recherche
   const [search, setSearch] = useState("");
-  const [price, setPrice] = useState([]);
+  const [price, setPrice] = useState([25, 100]);
   const [priceOrder, setPriceOrder] = useState("");
 
   return  (
     <Router>
       <Header logo={logo} search={search} setSearch={setSearch}  />
       <Routes>
-        <Route path="/" element={<Home price={price} setPrice={setPrice} />} />
+        <Route path="/" element={<Home setPriceOrder={setPriceOrder} priceOrder={priceOrder} search={search} setSearch={setSearch} price={price} setPrice={setPrice} />} />
         <Route path="/offer/:id" element={<Product />} />
         <Route path="/login" element={<Login token={token} />} />
         <Route path="/subscribe" element={<Subscribe token={token} />} />

@@ -8,6 +8,7 @@ function Subscribe ({ token}) {
     <div className="login-subscribe">
            <div className="container">
                 <form>
+                     <h1>Inscris-toi avec ton email</h1>
                      <div className="input_name">
                         <label>Nom d'utilisateur
                             <input/>
@@ -32,7 +33,7 @@ function Subscribe ({ token}) {
                      <button className="button button-primary">Continuer</button>                                                         
                 </form>
                 <div className="footer-form">
-                    Tu as déjà un compte ? <Link className="u-block link button button-secondary" to="/login" title="Se">Se connecter</Link>  
+                    Tu as déjà un compte ? <Link className="u-block link button button-secondary" to="/login" title="Se connecter">Se connecter</Link>  
                 </div>                   
             </div>
         </div>

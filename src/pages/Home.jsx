@@ -10,17 +10,19 @@ import Filters from "../components/Filters"
 import banner from '../assets/banner.jpg'
 import tear from '../assets/tear.f7439053.svg' 
 
-function Home({ price, setPrice}) {
+function Home({ price, setPrice, search, setSearch, priceOrder, setPriceOrder}) {
     // On initialise data comme null
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-  
+
+    console.log(price[0])
+
     // On appelle un state UseEffect pour qu'a la création de home, on va chercher les données via axios
     useEffect(() => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "https://lereacteur-vinted-api.herokuapp.com/offers"
+            `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}`
           );
           // On envoie les données à note state SetData
           setData(response.data); 
@@ -31,7 +33,7 @@ function Home({ price, setPrice}) {
         setIsLoading(false);    
       };
       fetchData();
-    }, []);
+    }, [price, search, priceOrder]);
 
     return isLoading ? (
        <main className="loading">

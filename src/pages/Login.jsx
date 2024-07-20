@@ -8,6 +8,7 @@ function Login ({ token}) {
        <div className="login-subscribe">
            <div className="container">
                 <form>
+                     <h1>Se connecter</h1>
                      <div className="input_email">
                         <label>Email
                            <input type="email"></input>

@@ -76,6 +76,22 @@ a {
     width: 100%;
 }
 
+label input {
+    border: 1px solid rgb(219, 219, 219);
+    min-height: 40px;
+    border-radius: 2px;
+    padding: 0 15px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #4a4a4a;
+}
+
+.link {
+    text-decoration: underline;
+}
+
 .button.button-secondary {
     color: #007782;
     background-color: transparent;
@@ -441,8 +457,7 @@ a {
     line-height: 1.3em;
 }
 
-.login-subscribe form > div label input {
-    border: 1px solid rgb(219, 219, 219);
-    min-height: 40px;
-    border-radius: 2px;
+.login-subscribe h1 {
+    text-align: center;
+    margin-bottom: 20px;
 }
