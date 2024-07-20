@@ -1,21 +1,18 @@
 
 import { Range, getTrackBackground } from "react-range";
-import { useState } from "react";
 
 const Filters = ({price, setPrice}) => {
 
   const Step = 50;
   const Min = 0;
-  const Max = 400;
+  const Max = 700;
 
-  const [values, setValues] = useState([25, 100]);
-  
-  function handleMouseUp () {
-    let newArray = {...price};
-    newArray = [values[0], values[1]]
-    console.log(newArray)
-    setPrice(newArray)
-  }
+  const values = price;
+
+  const handleChangeRange = (values) => {
+    price = values
+    setPrice(price);
+  };
 
   return (
     <div className="container">
@@ -37,12 +34,11 @@ const Filters = ({price, setPrice}) => {
                 step= {Step}
                 min= {Min}
                 max= {Max}
-                onChange={(values) => setValues(values)}
+                onChange={(values) => {handleChangeRange(values);}}
                 renderTrack={({ props, children }) => (
                   <div
-                    onMouseUp={handleMouseUp} 
-                    onMouseDown={handleMouseUp}
-                    onTouchStart={handleMouseUp}
+                    onMouseDown={props.onMouseDown}
+                    onTouchStart={props.onTouchStart}
                     style={{
                       ...props.style,
                       height: "36px",
