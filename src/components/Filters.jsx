@@ -3,9 +3,9 @@ import { Range, getTrackBackground } from "react-range";
 
 const Filters = ({price, setPrice}) => {
 
-  const Step = 50;
+  const Step = 1;
   const Min = 0;
-  const Max = 700;
+  const Max = 500;
 
   const values = price;
 
