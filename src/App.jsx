@@ -12,36 +12,51 @@ import Header from './components/Header'
 import Home from "./pages/Home";
 import Product from "./pages/Offer";
 import Login from "./pages/Login.jsx";
-import Subscribe from "./pages/Subscribe.jsx";
-import './App.css'
+import Signup from "./pages/Signup.jsx";
+import Publish from "./pages/Publish.jsx"; 
+import './App.css' 
 
 
-function App() { 
+function App() {
 
+  const [user, setUser] = useState("");
   useEffect(() => {
     // Scroll to the top when the component mounts
     window.scrollTo(0, 0);
   }, []);
 
-  // Creation d'un cookie
   const [token, setToken] = useState(
-    Cookies.get("token") || null
-    // soit je trouve un cookie, soit c'est nulL
+    Cookies.get("userToken") || null
   );
+
+  console.log(token)
+  console.log(user)
+
+  // fonction pour permettre de récupérer le token et de le stoker ou l'enlever
+  const handleToken = (token) => {
+    if (token) {
+      Cookies.set("userToken", token, { expires: 7 });
+      setToken(token);   
+    } else {
+      Cookies.remove("userToken");
+      setToken(null);
+    }
+  }
 
   // Creation d'un state pour ma barre de recherche
   const [search, setSearch] = useState("");
-  const [price, setPrice] = useState([25, 100]);
+  const [price, setPrice] = useState([0, 200]);
   const [priceOrder, setPriceOrder] = useState("");
 
   return  (
     <Router>
-      <Header logo={logo} search={search} setSearch={setSearch}  />
+      <Header handleToken={handleToken} token={token} user={user} logo={logo} search={search} setSearch={setSearch}  />
       <Routes>
         <Route path="/" element={<Home setPriceOrder={setPriceOrder} priceOrder={priceOrder} search={search} setSearch={setSearch} price={price} setPrice={setPrice} />} />
         <Route path="/offer/:id" element={<Product />} />
-        <Route path="/login" element={<Login token={token} />} />
-        <Route path="/subscribe" element={<Subscribe token={token} />} />
+        <Route path="/login" element={<Login handleToken={handleToken} setUser={setUser} token={token} user={user} />} />
+        <Route path="/signup" element={<Signup handleToken={handleToken} user={user} setUser={setUser} setToken={setToken} token={token} />} />
+        <Route path="/publish" element={<Publish token={token} />} />
       </Routes>
       <footer>
           <div className="container">

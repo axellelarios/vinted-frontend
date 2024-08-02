@@ -4,27 +4,13 @@ import {Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 
-function Header({logo, setSearch, search}) {
+function Header({handleToken, token, user, logo, setSearch, search}) {
 
   const navigate = useNavigate(); 
 
   const handleTitleChange = (event) => {
     setSearch(event.target.value)
   }
-
-  //const handleChange = async (event) => {
-  //  event.preventDefault();
-  //  try {
-  //    setSearch({
-  //      ...search,
-  //      title: searchTitle,
-  //    });
-  //    console.log(search)
-  //    navigate("/");
-  //  } catch (error) {
-  //    console.log(error.response);
-  //  }
-  //};
 
   return (
     <header>
@@ -40,15 +26,26 @@ function Header({logo, setSearch, search}) {
                         <input value={search} onChange={handleTitleChange} placeholder="Rechercher des articles"></input>
                 </form>  
                 <div className="header__right u-flexbox u-align-items-center u-justify-content-end">
-                        <Link className="u-block button button-secondary" to="/subscribe" title="S'incrire">
-                            S'inscrire / Se connecter
-                        </Link>  
-                        <a href="/" title="S'incrire" className="button button-primary hidden-small">
+                        {token?
+                         <div>
+                            <div> Bienvenue {user? user : "Vintie"} </div>  
+                                {token ? (
+                                  <a className="u-block button button-secondary" onClick={() => {handleToken(null)}} > Se déconnecter </a>
+                                ): 
+                                <></>
+                                }                                     
+                         </div>                     
+                        : 
+                          <Link className="u-block button button-secondary" to="/signup" title="S'incrire">
+                          S'inscrire / Se connecter
+                          </Link>                        
+                        }
+                        <Link to="/publish" title="S'incrire" className="button button-primary hidden-small">
                             Vends tes articles
-                        </a>  
-                        <a href="/" title="S'incrire" className="hidden-tab-and-up button button-primary">
+                        </Link> 
+                        <Link to="/publish" title="S'incrire" className="hidden-tab-and-up button button-primary">
                             Vendre
-                        </a>                                  
+                        </Link>                                  
                 </div>  
           </div>          
         </div>

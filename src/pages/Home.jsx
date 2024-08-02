@@ -52,15 +52,20 @@ function Home({ price, setPrice, search, setSearch, priceOrder, setPriceOrder}) 
             <Filters price={price} setPrice={setPrice} />
             <section className="offers">
               <div className="container">
-                  <div className="offers-content u-flexbox u-flex-wrap">
-                  {data.offers.map((offer) => {
+                  <div className="offers-content u-flexbox u-flex-wrap">  
+                     
+                  {
+                  data.offers.length > 0 ? 
+                  data.offers.map((offer) => {
                     return (
                         <div className="offer-wrapper" key={offer._id}>
-                          {/* On envoie les données de l'objets data */}
+                          {/* On envoie les données de l'object data */}
                           <Offers offer={offer} key={offer._id} />
-                        </div>
+                        </div> 
                       );
-                  })}
+                  })
+                  : <div className="no-result">Pas de résultats.</div>
+                  }
                   </div>
               </div>
             </section>           
