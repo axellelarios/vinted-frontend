@@ -76,7 +76,7 @@ a {
     width: 100%;
 }
 
-label input {
+label input, textarea {
     border: 1px solid rgb(219, 219, 219);
     min-height: 40px;
     border-radius: 2px;
@@ -220,9 +220,15 @@ h1 {
     .header__search, .header__logo, .header__right {
         flex: unset;
     } 
-    .header__right .button.button-primary, .header__right .button.button-secondary {
+    .header__right .button.button-primary, .header__right .button.button-secondary, .username-wrap {
         font-size: 12px;
         line-height: 1.2em;
+    }
+    .username-wrap {
+        font-weight: 600;
+    }  
+    .login-wrapper {
+        text-align: right;
     }
     .header__right {
         width: 80%;
@@ -271,8 +277,8 @@ h1 {
 
 @media only screen and  (max-width: 768px) {
     .hero {
-        max-height: 260px;
-        height: 260px;
+        max-height: 220px;
+        height: 220px;
         margin-bottom: 20px;
     }
     .hero .hero-overlay {
@@ -566,8 +572,40 @@ h1 {
     margin: 10px 0;
     display: flex;
     gap: 5px;
+    align-items: center;
 }
 
 .dropzone-images img {
     max-width: 150px;
+}
+
+.button-with-icon {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    gap: 5px;
+    height: fit-content;
+}
+
+.button.button-with-icon {
+    color:#007782;
+    font-weight: 600;
+    border: 1px solid #75a5aa;
+    padding: 10px 15px 10px;
+}
+
+.button-with-icon svg path {
+    fill:#007782
+}
+
+@media only screen and  (max-width: 340px) {
+    .button.button-with-icon {
+        font-size: 13px;
+    }
+    .dropzone-images img {
+        max-width: 43px;
+    }
+    .dropzone-images {
+        flex-wrap: wrap;
+    }
 }

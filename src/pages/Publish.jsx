@@ -58,9 +58,11 @@ function Publish ({handleToken, token}) {
 
   const baseStyle = {
     flex: 1,
+    minHeight: 200,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
     padding: '20px',
     borderWidth: 2,
     borderRadius: 2,
@@ -117,10 +119,20 @@ function Publish ({handleToken, token}) {
       <div className="dropzone-wrapper">
         <div {...getRootProps({style})}>
           <input {...getInputProps()} />
-         <p>Drag 'n' drop some files here, or click to select files</p>
-         <div className="dropzone-images"> 
-            {picture ? picture.map(item => <img key={item.path} src={URL.createObjectURL(item)} alt="produit" />) : <></>}
-         </div>
+          {picture ?
+          <div>
+              <div className="dropzone-images"> 
+                  {picture ? picture.map(item => <img key={item.path} src={URL.createObjectURL(item)} alt="produit" />) : <></>}
+
+                  <div className="button button-with-icon button-secondary">
+                    <svg viewBox="0 0 16 16" width="16" height="16"><path d="M14 2v4.5H9.5l1.68-1.68A4.48 4.48 0 0 0 3.5 8a4.5 4.5 0 0 0 8.72 1.5h1.58a6 6 0 1 1-1.57-5.73L14 2z"></path></svg>                  </div>
+                  </div> 
+          </div>:
+          <div className="button button-with-icon button-secondary">
+              <svg viewBox="0 0 24 24" width="24" height="24"><path d="M20 11.25h-7.25V4h-1.5v7.25H4v1.5h7.25V20h1.5v-7.25H20z"></path></svg>
+              <span> Ajoute des photos </span>
+          </div>
+          }
         </div> 
       </div>
     );
@@ -147,7 +159,7 @@ function Publish ({handleToken, token}) {
                     setTitle(event.target.value);
                   }}
                 /></label>
-                <label> Desciption
+                <label> Description
                 <textarea
                   rows={6}
                   cols={30}

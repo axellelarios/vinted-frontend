@@ -27,8 +27,8 @@ function Header({handleToken, token, user, logo, setSearch, search}) {
                 </form>  
                 <div className="header__right u-flexbox u-align-items-center u-justify-content-end">
                         {token?
-                         <div>
-                            <div> Bienvenue {user? user : "Vintie"} </div>  
+                         <div className="login-wrapper">
+                            <div className="username-wrap"> Bienvenue {user? user : "Vintie"} </div>  
                                 {token ? (
                                   <a className="u-block button button-secondary" onClick={() => {handleToken(null)}} > Se déconnecter </a>
                                 ): 
