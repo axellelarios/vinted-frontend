@@ -598,7 +598,13 @@ h1 {
     fill:#007782
 }
 
-@media only screen and  (max-width: 340px) {
+@media only screen and  (max-width: 760px) {
+    .dropzone-images img {
+        max-width: 43px;
+    }
+}
+
+@media only screen and  (max-width: 540px) {
     .button.button-with-icon {
         font-size: 13px;
     }

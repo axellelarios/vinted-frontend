@@ -37,7 +37,7 @@ function Login ({handleToken, setUser, token}) {
       console.log(response.data.account.username);
       handleToken(response.data.token);
       setUser(response.data.account.username); 
-      navigate("/");
+      navigate("/publish");
       } catch (error) {
           console.log(error.message)
           setError(error.message);
