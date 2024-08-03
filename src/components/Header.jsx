@@ -1,6 +1,6 @@
 
-import React, { useState, useEffect } from "react";
-import {Link } from "react-router-dom";
+import React, { useState, useEffect, useLayoutEffect } from "react";
+import {Link, Outlet, useLocation} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 
@@ -12,8 +12,17 @@ function Header({handleToken, token, user, logo, setSearch, search}) {
     setSearch(event.target.value)
   }
 
+  const location = useLocation();
+
+  // scroll to top of page after a page transition.
+  useLayoutEffect(() => {
+      document.documentElement.scrollTo({ top:0, left:0, behavior: "instant" });
+  }, [location.pathname]);
+
   return (
+
     <header>
+        <Outlet />
         <div className="container u-flexbox u-align-items-center">
           <div className="header u-flexbox u-align-items-center u-fill-width u-justify-content-space-between">
                 <div className="header__logo">

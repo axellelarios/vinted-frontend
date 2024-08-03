@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 // RENOMMAGE DES ROUTES
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 
 // IMPORT ASSETS
 import logo from './assets/logo.svg'
@@ -20,10 +20,6 @@ import './App.css'
 function App() {
 
   const [user, setUser] = useState("");
-  useEffect(() => {
-    // Scroll to the top when the component mounts
-    window.scrollTo(0, 0);
-  }, []);
 
   const [token, setToken] = useState(
     Cookies.get("userToken") || null

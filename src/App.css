@@ -600,7 +600,7 @@ h1 {
 
 @media only screen and  (max-width: 760px) {
     .dropzone-images img {
-        max-width: 43px;
+        max-width: 90px;
     }
 }
 
