@@ -323,7 +323,7 @@ h1 {
 }
 
 .offer-wrapper .card-details {
-    gap: 10px;
+    gap: 5px;
     font-size: 12px;
     opacity: 0.6;
     text-transform: lowercase;
@@ -391,6 +391,11 @@ h1 {
 
 /*** OFFER PAGE **/
 
+.offers {
+    padding-bottom: 50px;
+}
+
+
 .offer-section {
     background-color: #f2f2f2;
     padding: 40px 0;
@@ -427,6 +432,60 @@ h1 {
     width: 29%;
     background-color: white;
     padding: 20px;
+}
+
+.offer-infos .price_container {
+    margin: 15px 0;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #dddddd;
+    display: flex;
+    align-items: start;
+    gap: 3px;
+    flex-direction: column;
+}
+
+.offer-infos  .details-list__item {
+    width: 100%;
+    
+}
+
+.offer-infos .description_container {
+    margin: 15px 0;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #dddddd;
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    flex-direction: column;
+    text-transform: uppercase;
+    opacity: 0.6;
+    font-size: 13px;
+} 
+
+.offer-infos .description_buttons, .offer-infos .description_title {
+    margin: 15px 0;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #dddddd;
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    flex-direction: column;
+} 
+
+.offer-infos .description_buttons .button.button-primary {
+    width: 100%;
+}
+
+.offer-infos .description_container .details-list__item-title {
+    display: flex;
+    gap: 5px
+}
+
+.offer-infos .description_container .details-list__item-title span:first-child{
+    width: calc(50% - 5px);
+}
+.offer-infos .description_container .details-list__item-title span:last-child{
+    width: calc(50% - 5px);
 }
 
 @media only screen and  (max-width: 768px) {

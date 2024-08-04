@@ -38,7 +38,7 @@ function Signup ({ handleToken, setUser, token, setToken, user}) {
         event.preventDefault();
         try {
         const response = await axios.post(
-            "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+            "https://site--backend-vinted--z96jrv9g2mbz.code.run/user/signup",
             {
             username : username,
             email: email,

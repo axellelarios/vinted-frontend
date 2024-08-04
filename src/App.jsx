@@ -14,19 +14,18 @@ import Product from "./pages/Offer";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import Publish from "./pages/Publish.jsx"; 
+import User from "./pages/User.jsx";
+
 import './App.css' 
 
 
 function App() {
 
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState([]);
 
   const [token, setToken] = useState(
     Cookies.get("userToken") || null
   );
-
-  console.log(token)
-  console.log(user)
 
   // fonction pour permettre de récupérer le token et de le stoker ou l'enlever
   const handleToken = (token) => {
@@ -46,11 +45,12 @@ function App() {
 
   return  (
     <Router>
-      <Header handleToken={handleToken} token={token} user={user} logo={logo} search={search} setSearch={setSearch}  />
+      <Header handleToken={handleToken} token={token} setUser={setUser} user={user} logo={logo} search={search} setSearch={setSearch}  />
       <Routes>
         <Route path="/" element={<Home setPriceOrder={setPriceOrder} priceOrder={priceOrder} search={search} setSearch={setSearch} price={price} setPrice={setPrice} />} />
         <Route path="/offer/:id" element={<Product />} />
         <Route path="/login" element={<Login handleToken={handleToken} setUser={setUser} token={token} user={user} />} />
+        <Route path="/user/:id" element={<User handleToken={handleToken} setUser={setUser} token={token} user={user} />} />
         <Route path="/signup" element={<Signup handleToken={handleToken} user={user} setUser={setUser} setToken={setToken} token={token} />} />
         <Route path="/publish" element={<Publish token={token} />} />
       </Routes>

@@ -12,9 +12,10 @@ const Offer = () => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(
-                `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
+                `https://site--backend-vinted--z96jrv9g2mbz.code.run/offer/${id}` 
                 );
                 // On envoie les données à note state SetOffer
+                console.log(response.data)
                 setOffer(response.data); 
             } catch (error) {
                 console.log("this is an error >> " + error.response);
@@ -32,12 +33,14 @@ const Offer = () => {
         <main className="offer-section">
             <div className="container">
                 <div className="offer-container u-flexbox u-fill-width u-justify-content-space-between">
-                    <div className="offer-medias">
-                        {offer.product_pictures.map((picture, index) => {
+                    <div className="offer-medias">                    
+                        {offer.product_image.length > 1 ? offer.product_image.map((picture, index) => {
                             return (
-                            <div  key={"picture" + index}> <img src={picture.url} /> </div>
+                            <div  key={"picture" + index}> <img src={picture.secure_url} /> </div>
                             )
-                        })}
+                        }) :
+                          <div  key={"picture" + offer.product_name}> <img src={offer.product_image.secure_url} /> </div>  
+                        }
                     </div>
                     <div  className="offer-infos">
                         <div className="price_container">
@@ -50,18 +53,23 @@ const Offer = () => {
                                 const keys = Object.keys(detail);
                                 const key = keys[0];
                                 return (
-      
-                                    <div key={"detail" + index}> 
-                                        <div className="details-list__item">
-                                            <div className="details-list__item-title">{key} {detail[key]} </div>
+
+                                        <div key={"detail" + index} className="details-list__item">
+                                            <div className="details-list__item-title">
+                                                <span> {key} </span>
+                                                <span> {detail[key]} </span>
+                                            </div>
                                         </div>
-                                    </div>
                                 );
                             })}  
                         </div>                       
-                        <div className="description_container">
+                        <div className="description_title">
                             <div className="title">{offer.product_name}</div>
-                        </div>                       
+                            <div className="title">{offer.product_description}</div>
+                        </div>                              
+                        <div className="description_buttons">
+                            <a className="button button-primary">Acheter</a>
+                        </div>                                            
                     </div>                  
                 </div>
             </div>

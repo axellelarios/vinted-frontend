@@ -28,19 +28,23 @@ function Login ({handleToken, setUser, token}) {
       event.preventDefault();
       try {
       const response = await axios.post(
-          "https://lereacteur-vinted-api.herokuapp.com/user/login",
+          "https://site--backend-vinted--z96jrv9g2mbz.code.run/user/login",
           {
           email: email,
           password: password,
           }
       );
-      console.log(response.data.account.username);
       handleToken(response.data.token);
-      setUser(response.data.account.username); 
+      setUser(response.data);  
       navigate("/publish");
       } catch (error) {
-          console.log(error.message)
-          setError(error.message);
+         console.log(error.response.data)
+
+         if (error.response.data.message) {
+            setError(error.response.data.message)
+         } else if (error.response.data.error) {
+            setError(error.response.data.error);
+         }
       }
    };
 

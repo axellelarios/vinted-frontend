@@ -21,7 +21,7 @@ function Home({ price, setPrice, search, setSearch, priceOrder, setPriceOrder}) 
         try {
           // On appelle notre requete avec les filtres
           const response = await axios.get(
-            `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${price[0]}&priceMax=${price[1]}`
+            `https://site--backend-vinted--z96jrv9g2mbz.code.run/offers?title=${search}&priceMin=${price[0]}&priceMax=${price[1]}`
           );
           // On envoie les données à note state SetData
           setData(response.data); 

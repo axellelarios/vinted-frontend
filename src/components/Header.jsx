@@ -4,12 +4,17 @@ import {Link, Outlet, useLocation} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 
-function Header({handleToken, token, user, logo, setSearch, search}) {
+function Header({handleToken, token, setUser, user, logo, setSearch, search}) {
 
   const navigate = useNavigate(); 
 
   const handleTitleChange = (event) => {
     setSearch(event.target.value)
+  }
+
+  const handleDisconned = () => {
+    handleToken(null);
+    setUser([]);
   }
 
   const location = useLocation();
@@ -37,12 +42,15 @@ function Header({handleToken, token, user, logo, setSearch, search}) {
                 <div className="header__right u-flexbox u-align-items-center u-justify-content-end">
                         {token?
                          <div className="login-wrapper">
-                            <div className="username-wrap"> Bienvenue {user? user : "Vintie"} </div>  
-                                {token ? (
-                                  <a className="u-block button button-secondary" onClick={() => {handleToken(null)}} > Se déconnecter </a>
+                              <Link to={`user/${user._id}`} className="username-wrap"> 
+                                    Bienvenue {user.account.username}
+                              </Link>  
+
+                              {token ? (
+                                  <a className="u-block button button-secondary" onClick={handleDisconned} > Se déconnecter </a>
                                 ): 
                                 <></>
-                                }                                     
+                              }                                     
                          </div>                     
                         : 
                           <Link className="u-block button button-secondary" to="/signup" title="S'incrire">
