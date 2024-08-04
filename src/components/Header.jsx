@@ -1,20 +1,18 @@
 
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import {Link, Outlet, useLocation} from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
+import axios from "axios";
 
-function Header({handleToken, token, setUser, user, logo, setSearch, search}) {
-
-  const navigate = useNavigate(); 
-
+function Header({handleSession, user,  session, handleToken, token, logo, setSearch, search}) {
+  
   const handleTitleChange = (event) => {
     setSearch(event.target.value)
   }
 
-  const handleDisconned = () => {
+  const handleDisconected = () => {
     handleToken(null);
-    setUser([]);
+    handleSession(null)
   }
 
   const location = useLocation();
@@ -40,14 +38,18 @@ function Header({handleToken, token, setUser, user, logo, setSearch, search}) {
                         <input value={search} onChange={handleTitleChange} placeholder="Rechercher des articles"></input>
                 </form>  
                 <div className="header__right u-flexbox u-align-items-center u-justify-content-end">
-                        {token?
+                       {token ?
                          <div className="login-wrapper">
-                              <Link to={`user/${user._id}`} className="username-wrap"> 
-                                    Bienvenue {user.account.username}
-                              </Link>  
+
+                               {/*session ?
+                                  <Link to={`user/${session}`} className="username-wrap">
+                                      <span><img src={user ? user.account.avatar.secure_url: ''} /></span>
+                                  </Link>  
+                               : <></>
+                               */} 
 
                               {token ? (
-                                  <a className="u-block button button-secondary" onClick={handleDisconned} > Se déconnecter </a>
+                                  <a className="u-block button button-secondary" onClick={handleDisconected} > Se déconnecter </a>
                                 ): 
                                 <></>
                               }                                     

@@ -94,6 +94,10 @@ h1 {
     color: #4a4a4a;
 }
 
+h2 {
+    font-size: 24px;
+}
+
 .link {
     text-decoration: underline;
     cursor: pointer;
@@ -200,6 +204,22 @@ h1 {
 .header__right .button.button-secondary:hover {
     background-position: left bottom, left bottom;
     background-size: 100% .1rem, 100% .1rem;
+}
+
+.login-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    justify-content: end;
+}
+
+.login-wrapper .username-wrap img {
+    width: 30px;
+    height: 30px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 100%;
 }
 
 @media only screen and  (max-width: 1000px) {
@@ -343,6 +363,10 @@ h1 {
     width: 100%;
 }
 
+.offers-content {
+    row-gap: 20px;
+}
+
 @media only screen and  (max-width: 1000px) {
     .offer-wrapper {
         width: 33%;
@@ -472,6 +496,11 @@ h1 {
     flex-direction: column;
 } 
 
+.offer-infos .description_buttons, .offer-infos .description_title div:first-child {
+    font-weight: 700;
+} 
+
+
 .offer-infos .description_buttons .button.button-primary {
     width: 100%;
 }
@@ -539,6 +568,22 @@ h1 {
     padding: 20px;
     gap: 20px;   
     text-align: center;
+}
+
+.button-file {
+  color: #007782;
+}
+
+.login-subscribe form > div .button-file label span {
+    font-size: 16px;
+    opacity: 1;
+} 
+
+.avatar_file img {
+    max-width: 100px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    margin-top: 10px;
 }
 
 .login-subscribe form > div {
@@ -673,4 +718,62 @@ h1 {
     .dropzone-images {
         flex-wrap: wrap;
     }
+}
+
+
+.user-section {
+    background-color: #fff;
+    padding: 40px 0;
+}
+
+.user-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-header .user-left {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-header .user-left img {
+    max-width: 170px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 100px;
+}
+
+.user-header .user-left .user-description {
+    padding: 16px;
+}
+
+.user-header .user-left .user-description span {
+    text-transform: uppercase;
+    opacity: 0.6;
+    font-size: 13px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+@media only screen and  (max-width: 768px) {
+    .user-header {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        flex-direction: column;
+    }
+    .user-header .user-left {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
+    .user-header .user-left img {
+        width: 100%;
+        max-width: 150px;
+        margin: 0 auto;
+    }  
 }

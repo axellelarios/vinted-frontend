@@ -5,17 +5,28 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function Signup ({ handleToken, setUser, token, setToken, user}) {
+function Signup ({handleSession, handleToken, setUser, token, setToken, user}) {
 
     const [email, setEmail] = useState("");
-    const [username, setName] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [newsletter, setNewsletter] = useState(false);
+    const [avatar, setAvatar] = useState();
     const [error, setError] = useState("");
 
     const navigate = useNavigate();
+
+    const formData = new FormData();
+    formData.append("username", username);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("newsletter", newsletter);
+    formData.append("avatar", avatar)
+
+
     const handleNameChange = event => {
         const value = event.target.value;
-        setName(value);
+        setUsername(value);
     };
 
     const handleEmailChange = event => {
@@ -25,7 +36,6 @@ function Signup ({ handleToken, setUser, token, setToken, user}) {
     
     const handlePasswordChange = event => {
         const value = event.target.value;
-        console.log(value.length)
         if (value.length < 6) {
            setError("Le mot de passe doit contenir 6 lettres minimum, dont au moins un chiffre.")
         } else {
@@ -39,20 +49,22 @@ function Signup ({ handleToken, setUser, token, setToken, user}) {
         try {
         const response = await axios.post(
             "https://site--backend-vinted--z96jrv9g2mbz.code.run/user/signup",
-            {
-            username : username,
-            email: email,
-            password: password,
-            newsletter: false
-            }
+            formData,
+                {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "multipart/form-data",
+                  },
+            }    
         );
-        console.log(response.data.account.username);
-        handleToken(response.data.token);
-        setUser(response.data.account.username); 
-        navigate("/");
+        if (response.data._id) { 
+            handleToken(response.data.token);
+            handleSession(response.data._id)
+            navigate(`/user/${response.data._id}`);
+        }
+
         } catch (error) {
             console.log(error.message)
-            setError(error.response.data.message);
         }
     };
 
@@ -62,12 +74,36 @@ function Signup ({ handleToken, setUser, token, setToken, user}) {
             
                 <form onSubmit={handleSubmit}>
                      <h1>Inscris-toi avec ton email</h1>
+
+                     <div className="avatar_file">
+                            <div className="dashed-preview-without" >
+                            <div className="input-design-default">
+                                <div className="link button button-file">
+                                <label htmlFor="filePicker" > 
+                                    <span>Choisissez un avatar</span>
+                                </label>
+                                <input
+                                    style={{ display: "none" }}
+                                    id="filePicker"
+                                    type="file"
+                                    onChange={(event) => {
+                                    setAvatar(event.target.files[0]);
+                                    }}
+                                />
+                                {avatar && (
+                                    <img src={URL.createObjectURL(avatar)} alt="avartar"/>
+                                )}
+                                </div>
+                            </div>
+                            </div>
+                    </div>
+
                      <div className="input_name">
                         <label>Nom d'utilisateur
                             <input
                             placeholder=""
                             type="text"
-                            name="name"
+                            name="username"
                             value={username}
                             onChange={handleNameChange}                          
                             />

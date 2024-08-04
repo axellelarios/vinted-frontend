@@ -1,11 +1,11 @@
 
 // IMPORT PACKAGES
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link} from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 
-function Login ({handleToken, setUser, token}) { 
+function Login ({handleSession, handleToken, setUser, token}) { 
 
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
@@ -35,6 +35,7 @@ function Login ({handleToken, setUser, token}) {
           }
       );
       handleToken(response.data.token);
+      handleSession(response.data._id)
       setUser(response.data);  
       navigate("/publish");
       } catch (error) {
@@ -81,6 +82,9 @@ function Login ({handleToken, setUser, token}) {
                             {error}
                      </span>                                                            
                 </form>
+                <div className="footer-form">
+                Tu n'as pas de compte Vinted ? <Link className="u-block link button button-secondary" to="/signup" title="Créer un compte">S'inscrire</Link>  
+                </div>   
          </div>
         </main>
     ): 

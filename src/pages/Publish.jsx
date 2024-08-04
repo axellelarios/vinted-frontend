@@ -31,7 +31,6 @@ function Publish ({handleToken, token}) {
       formData.append("brand", brand);
       formData.append("size", size);
       formData.append("color", color);
-      formData.append("color", color);
       formData.append("picture", picture)
       for (let i = 0; i < picture.length; i++) {
         formData.append("picture", picture[i]);
@@ -229,7 +228,7 @@ function Publish ({handleToken, token}) {
           </div>
         </main>
     ): 
-    <Navigate to="/login" />
+    <Navigate to="/login" /> 
   }
   
   export default Publish

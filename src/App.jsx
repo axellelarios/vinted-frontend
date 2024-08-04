@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 // RENOMMAGE DES ROUTES
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
+import axios from "axios";
 
 // IMPORT ASSETS
 import logo from './assets/logo.svg'
@@ -27,6 +28,20 @@ function App() {
     Cookies.get("userToken") || null
   );
 
+  const [session, setSession] = useState(
+    Cookies.get("session") || null
+  );
+
+  const handleSession = (userId) => {
+    if (userId) {
+      Cookies.set("session", userId, { expires: 7 });
+      setSession(userId);   
+    } else {
+      Cookies.remove("session");
+      setSession(null); 
+    }
+  }
+
   // fonction pour permettre de récupérer le token et de le stoker ou l'enlever
   const handleToken = (token) => {
     if (token) {
@@ -45,13 +60,13 @@ function App() {
 
   return  (
     <Router>
-      <Header handleToken={handleToken} token={token} setUser={setUser} user={user} logo={logo} search={search} setSearch={setSearch}  />
+      <Header handleSession={handleSession} session={session} handleToken={handleToken} user={user} token={token} logo={logo} search={search} setSearch={setSearch}  />
       <Routes>
         <Route path="/" element={<Home setPriceOrder={setPriceOrder} priceOrder={priceOrder} search={search} setSearch={setSearch} price={price} setPrice={setPrice} />} />
         <Route path="/offer/:id" element={<Product />} />
-        <Route path="/login" element={<Login handleToken={handleToken} setUser={setUser} token={token} user={user} />} />
-        <Route path="/user/:id" element={<User handleToken={handleToken} setUser={setUser} token={token} user={user} />} />
-        <Route path="/signup" element={<Signup handleToken={handleToken} user={user} setUser={setUser} setToken={setToken} token={token} />} />
+        <Route path="/login" element={<Login handleSession={handleSession} session={session}  handleToken={handleToken} setUser={setUser} token={token} user={user} />} />
+        <Route path="/user/:id" element={<User handleSession={handleSession} session={session}  handleToken={handleToken} setUser={setUser} token={token} user={user} />} />
+        <Route path="/signup" element={<Signup handleSession={handleSession} session={session}  handleToken={handleToken} user={user} setUser={setUser} setToken={setToken} token={token} />} />
         <Route path="/publish" element={<Publish token={token} />} />
       </Routes>
       <footer>

@@ -10,7 +10,7 @@ import Filters from "../components/Filters"
 import banner from '../assets/banner.jpg'
 import tear from '../assets/tear.f7439053.svg' 
 
-function Home({ price, setPrice, search, setSearch, priceOrder, setPriceOrder}) {
+function Home({ price, setPrice, search, priceOrder}) {
     // On initialise data comme null
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
