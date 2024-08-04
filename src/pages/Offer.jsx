@@ -70,9 +70,8 @@ const Offer = ({token}) => {
                         </div>                              
                         <div className="description_buttons">
 
-
                             {token ?
-                            <Link className="button button-primary">Acheter</Link>                    
+                            <Link to='/payment' state={{data: offer}} className="button button-primary">Acheter</Link>                    
                             : 
                             <Link to='/login' className="button button-primary">Acheter</Link>                     
                             }

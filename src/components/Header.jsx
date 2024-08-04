@@ -1,11 +1,12 @@
 
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import {Link, Outlet, useLocation} from "react-router-dom";
-
+import { Navigate, useNavigate  } from "react-router-dom";
 import axios from "axios";
 
 function Header({handleSession, user,  session, handleToken, token, logo, setSearch, search}) {
-  
+  const navigate = useNavigate();
+
   const handleTitleChange = (event) => {
     setSearch(event.target.value)
   }
@@ -13,6 +14,7 @@ function Header({handleSession, user,  session, handleToken, token, logo, setSea
   const handleDisconected = () => {
     handleToken(null);
     handleSession(null)
+    navigate(`/`);
   }
 
   const location = useLocation();

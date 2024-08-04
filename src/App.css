@@ -496,12 +496,21 @@ h2 {
     flex-direction: column;
 } 
 
+.offer-infos .description_title .title:last-child
+ {
+    font-size: 16px;
+    opacity: 0.7;
+    line-height: 1.3em;
+}
+
 .offer-infos .description_buttons, .offer-infos .description_title div:first-child {
     font-weight: 700;
 } 
 
-
 .offer-infos .description_buttons .button.button-primary {
+    background-color: #00a4b3;
+    font-weight: 600;
+    font-size: 17px;
     width: 100%;
 }
 
@@ -546,7 +555,7 @@ h2 {
 
 /*** LOGIN SIGNOUT **/
 
-.login-subscribe {
+.login-subscribe, .payment-wrapper {
     background-color: #f2f2f2;
     padding: 40px 0;
 }
@@ -776,4 +785,101 @@ h2 {
         max-width: 150px;
         margin: 0 auto;
     }  
+}
+
+
+/* PAYMENT */
+
+.payment-wrapper .payment-stripe {
+    background-color: #ffffff;
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.payment-wrapper h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.payment-wrapper form > button {
+    color: white;
+    font-family: V-Inter, Helvetica Neue, Helvetica-Neue, Arial, sans-serif;
+    font-size: 18px;
+    background-color: #00925d;
+    font-weight: 375;
+    height: 33px;
+    line-height: 20px;
+    padding: 0 11px;
+    border: 0;
+    min-height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.payment-wrapper .detail-list__item-photo {
+    display: flex;
+    justify-items: center;
+}
+
+.payment-wrapper .detail-list__item-photo img {
+    max-width: 100px;
+    margin: 0 auto;
+}
+
+.payment-wrapper .description_container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.payment-wrapper .description_container .details-list__item {
+    display: flex;
+    gap: 5px;
+    width: 100%;
+}
+
+.payment-wrapper .details-list__item-price, .details-list__item-fees, .details-list__item-total {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    width: 100%;
+}
+
+.payment-wrapper .details-list__item-price span, .details-list__item-fees span, .details-list__item-total span {
+    width: calc(50% - 5px);
+}
+
+.payment-wrapper .details-list__item-price span:last-child, .details-list__item-fees span:last-child, .details-list__item-total span:last-child {
+    text-align: right;
+}
+
+.payment-wrapper .details-list__item-total span:last-child, .details-list__item-total {
+    font-weight: 600;
+}
+
+.payment-wrapper .details-list__item-total {
+    margin: 15px 0;
+    padding-top: 15px;
+    border-top: 1px solid #dddddd;
+}
+
+@media only screen and (max-width: 1000px) {
+    .payment-wrapper .container {
+        padding: 0;
+    }
+    .payment-wrapper .payment-stripe {
+        padding: 20px 10px;
+    }   
 }

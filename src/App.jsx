@@ -6,8 +6,9 @@ import axios from "axios";
 // IMPORT ASSETS
 import logo from './assets/logo.svg'
 import Cookies from "js-cookie";
+
 // IMPORT COMPOSANTS
-import Header from './components/Header'
+import Header from './components/Header.jsx'
 
 // IMPORT PAGES
 import Home from "./pages/Home";
@@ -16,9 +17,9 @@ import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import Publish from "./pages/Publish.jsx"; 
 import User from "./pages/User.jsx";
+import Payment from "./pages/Payment.jsx";
 
 import './App.css' 
-
 
 function App() {
 
@@ -64,11 +65,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Home setPriceOrder={setPriceOrder} priceOrder={priceOrder} search={search} setSearch={setSearch} price={price} setPrice={setPrice} />} />
         <Route path="/offer/:id" element={<Product token={token} />} />
+        <Route path="/payment/" element={<Payment token={token} />} />
         <Route path="/login" element={<Login handleSession={handleSession} session={session}  handleToken={handleToken} setUser={setUser} token={token} user={user} />} />
         <Route path="/user/:id" element={<User handleSession={handleSession} session={session}  handleToken={handleToken} setUser={setUser} token={token} user={user} />} />
         <Route path="/signup" element={<Signup handleSession={handleSession} session={session}  handleToken={handleToken} user={user} setUser={setUser} setToken={setToken} token={token} />} />
         <Route path="/publish" element={<Publish token={token} />} />
-      </Routes>
+      </Routes> 
       <footer>
           <div className="container">
                 
