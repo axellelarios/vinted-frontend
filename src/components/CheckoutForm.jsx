@@ -6,7 +6,7 @@ import {
   import { useState } from "react";
   import axios from "axios";
   
-  const CheckoutForm = () => {
+  const CheckoutForm = ({data}) => {
     // Permet de faire une requête à Stripe pour confirmer le paiement
     const stripe = useStripe();
     // Permet de récupérer le contenu des inputs
@@ -35,9 +35,13 @@ import {
         setErrorMessage(submitError.message);
         return;
       }
-  
+
       // Demande au backend de créer l'intention de paiement, il nous renvoie le clientSecret
-      const response = await axios.post("https://site--backend-vinted--z96jrv9g2mbz.code.run/payment");
+      const response = await axios.post("https://site--backend-vinted--z96jrv9g2mbz.code.run/payment", {
+        amount: data.product_price,
+        currency: "eur",
+        description: data.product_description
+      });
   
       const clientSecret = response.data.client_secret;
   

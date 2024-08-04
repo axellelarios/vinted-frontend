@@ -10,6 +10,9 @@ const stripePromise = loadStripe(
   "pk_live_51PkAEvBQggVPMzNaDYP21zh8AgyfybPYrWd9kWBCmfM8gbQTT62ZofNuSNmu9OsKZx487NuuceRq4Y3UDl5h6Wgw00SLrUgnih"  
 );
 
+
+console.log(stripePromise)
+
 const Payment = ({token}) => {
   const location = useLocation()
 
@@ -30,24 +33,23 @@ const Payment = ({token}) => {
 
   console.log(getPrice(productData.product_price))
 
-
   return (
     <main>
       <div className="payment-wrapper">
           <div className="container">
-             <h1>Paiement</h1>
+             <h1>Paiement</h1> 
              <div className="payment-stripe">
                   <div className="payment-information">
 
-                    <div class="description_container">
+                    <div className="description_container">
 
-                        <div class="details-list__item">
+                        <div className="details-list__item">
                                <Link to={`/offer/${productData._id}`} className=" button button-secondary"> 
                                  ← Retour
                                </Link>
                           </div>                   
 
-                          <div class="details-list__item">
+                          <div className="details-list__item">
                                 <Link to={`/offer/${productData._id}`} className="detail-list__item-photo"> 
                                   {productData.product_image.length > 1 ? <img key={productData._id} src={productData.product_image[0].secure_url} /> 
                                   : <img key={productData._id} src={productData.product_image.secure_url} /> 
@@ -55,22 +57,22 @@ const Payment = ({token}) => {
                               </Link>
                           </div>
                           
-                          <div class="details-list__item">
+                          <div className="details-list__item">
                             <div className="details-list__item-price">
                               <span> COMMANDE </span>
                               <span> {productData.product_price.toFixed(2)} €</span>
                             </div>
                           </div>
 
-                          <div class="details-list__item">
-                            <div class="details-list__item-fees">
+                          <div className="details-list__item">
+                            <div className="details-list__item-fees">
                               <span> Frais </span>
-                              <span> 1.20 € </span>
+                              <span> 1.20 € </span> 
                             </div>
                           </div>
 
-                          <div class="details-list__item">
-                            <div class="details-list__item-total">
+                          <div className="details-list__item">
+                            <div className="details-list__item-total">
                               <span> Total </span>
                               <span> {(productData.product_price + 1.2).toFixed(2)} €</span>
                             </div>
@@ -85,7 +87,7 @@ const Payment = ({token}) => {
                       currency: "eur"
                     }
                     }>
-                    <CheckoutForm />
+                    <CheckoutForm data={productData} />
                   </Elements>
               </div>
           </div>
