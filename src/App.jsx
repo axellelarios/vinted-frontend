@@ -63,7 +63,7 @@ function App() {
       <Header handleSession={handleSession} session={session} handleToken={handleToken} user={user} token={token} logo={logo} search={search} setSearch={setSearch}  />
       <Routes>
         <Route path="/" element={<Home setPriceOrder={setPriceOrder} priceOrder={priceOrder} search={search} setSearch={setSearch} price={price} setPrice={setPrice} />} />
-        <Route path="/offer/:id" element={<Product />} />
+        <Route path="/offer/:id" element={<Product token={token} />} />
         <Route path="/login" element={<Login handleSession={handleSession} session={session}  handleToken={handleToken} setUser={setUser} token={token} user={user} />} />
         <Route path="/user/:id" element={<User handleSession={handleSession} session={session}  handleToken={handleToken} setUser={setUser} token={token} user={user} />} />
         <Route path="/signup" element={<Signup handleSession={handleSession} session={session}  handleToken={handleToken} user={user} setUser={setUser} setToken={setToken} token={token} />} />
@@ -71,7 +71,7 @@ function App() {
       </Routes>
       <footer>
           <div className="container">
-              Made with love by Axelle for Le Reateur   
+                
           </div>
       </footer>
     </Router>

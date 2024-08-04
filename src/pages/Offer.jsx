@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
-const Offer = () => {
+const Offer = ({token}) => {
     const { id } = useParams();
     const [offer, setOffer] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -68,7 +69,14 @@ const Offer = () => {
                             <div className="title">{offer.product_description}</div>
                         </div>                              
                         <div className="description_buttons">
-                            <a className="button button-primary">Acheter</a>
+
+
+                            {token ?
+                            <Link className="button button-primary">Acheter</Link>                    
+                            : 
+                            <Link to='/login' className="button button-primary">Acheter</Link>                     
+                            }
+    
                         </div>                                            
                     </div>                  
                 </div>
