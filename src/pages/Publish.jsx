@@ -22,7 +22,7 @@ function Publish ({handleToken, token}) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (title, description, price, condition, city, brand, size, color, picture) {
+    if (title && description && price && condition && city && brand && size && color && picture) {
 
         try {
         
@@ -139,7 +139,7 @@ function Publish ({handleToken, token}) {
                 <span> Ajoute des photos </span>
             </div>
             }
-            {error ? <span className="error">Aucune photo ajoutée</span> : <></> }
+            {error ? picture ? <span className="error">Aucune photo ajoutée</span> : <></> : <></> }
         </div> 
       </div>
     );
@@ -242,7 +242,15 @@ function Publish ({handleToken, token}) {
                   }}
                 />{error ? price.length == 0 ?<span className="error">Prix : doit être renseigné</span> : <></> : <></>}
                 </label>
-                <button type="submit" value="Submit"  className="button button-primary">Ajouter</button> 
+
+                { !error ? 
+                   <button  type="submit" value="Submit"  className="button button-primary button-submit">
+                    Ajouter 
+                    </button> 
+                   : 
+                   <button disabled type="submit" value="Submit"  className="button button-primary">Ajouter</button> 
+                }
+                
               </form>
 
           </div>
