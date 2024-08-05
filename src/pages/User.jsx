@@ -35,14 +35,17 @@ const User = ({session}) => {
           <div className="container"> 
                 <div className="user-header">
                     <div className="user-left">  
-                         <img src={user.account.avatar.secure_url} /> 
+                         { user.account.avatar ?
+                         <img src={user.account.avatar.secure_url} /> :
+                         <div className="user-no-picture">{Array.from(user.account.username)[0]}</div>
+                         }
                          <div className="user-description">
                             <span>Membre :</span>
                             <h2>{user.account.username}</h2>
                          </div>
                     </div>
                     <div className="user-right">
-                              {session ?
+                              {session == user._id  ?
                                   <Link to='/' className="link button">
                                       Modifier mon profil
                                   </Link>  

@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+
+
 function Signup ({handleSession, handleToken, setUser, token, setToken, user}) {
 
     const [email, setEmail] = useState("");
@@ -14,7 +16,7 @@ function Signup ({handleSession, handleToken, setUser, token, setToken, user}) {
     const [avatar, setAvatar] = useState();
     const [error, setError] = useState("");
 
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
 
     const formData = new FormData();
     formData.append("username", username);
@@ -64,7 +66,13 @@ function Signup ({handleSession, handleToken, setUser, token, setToken, user}) {
         }
 
         } catch (error) {
-            console.log(error.message)
+            console.log(error.response.data)
+
+            if (error.response.data.message) {
+               setError(error.response.data.message)
+            } else if (error.response.data.error) {
+               setError(error.response.data.error);
+            }
         }
     };
 
@@ -138,7 +146,7 @@ function Signup ({handleSession, handleToken, setUser, token, setToken, user}) {
 
                      <span className="error">
                             {error}
-                     </span>                  
+                     </span>              
 
                 </form>
                 <div className="footer-form">

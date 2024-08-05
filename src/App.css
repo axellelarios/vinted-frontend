@@ -337,6 +337,13 @@ h2 {
    margin-right: 8px;
 }
 
+.offer-wrapper .card-header .user-no-picture{
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+    margin-right: 8px;
+}
+
 .offer-wrapper .card-username {
     font-size: 12px;
     opacity: 0.6;
@@ -880,4 +887,25 @@ h2 {
     .payment-wrapper .payment-stripe {
         padding: 20px 10px;
     }   
+}
+
+.user-no-picture {
+    width: 170px;
+    height: 170px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background: rgb(000, 117, 129);
+    border-radius: 50%;
+    color: white;
+    font-size: 37px;
+    text-transform: uppercase;
+}
+
+@media only screen and  (max-width: 768px) {
+    .user-no-picture {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+    } 
 }
