@@ -17,40 +17,49 @@ function Publish ({handleToken, token}) {
   const [city, setCity] = useState("");
   const [price, setPrice] = useState("");
 
+  const [error, setError] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const formData = new FormData();
-      formData.append("title", title);
-      formData.append("description", description);
-      formData.append("price", price);
-      formData.append("condition", condition);
-      formData.append("city", city);
-      formData.append("brand", brand);
-      formData.append("size", size);
-      formData.append("color", color);
-      formData.append("picture", picture)
-      for (let i = 0; i < picture.length; i++) {
-        formData.append("picture", picture[i]);
-      }  
+    if (title, description, price, condition, city, brand, size, color, picture) {
 
-      const response = await axios.post(
-        "https://site--backend-vinted--z96jrv9g2mbz.code.run/offer/publish",
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
-          },
+        try {
+        
+            const formData = new FormData();
+            formData.append("title", title);
+            formData.append("description", description);
+            formData.append("price", price);
+            formData.append("condition", condition);
+            formData.append("city", city);
+            formData.append("brand", brand);
+            formData.append("size", size);
+            formData.append("color", color);
+            formData.append("picture", picture)
+            for (let i = 0; i < picture.length; i++) {
+              formData.append("picture", picture[i]);
+            }  
+      
+            const response = await axios.post(
+              "https://site--backend-vinted--z96jrv9g2mbz.code.run/offer/publish",
+              formData,
+              {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                  "Content-Type": "multipart/form-data",
+                },
+              }
+            );
+
+            if (response.data._id) { 
+              navigate(`/offer/${response.data._id}`);
+            }
+        } catch (error) {
+          console.log("Je suis dans le catch", error);
         }
-      );
-      if (response.data._id) { 
-        navigate(`/offer/${response.data._id}`);
-      }
-    } catch (error) {
-      console.log("Je suis dans le catch", error);
+    }
+    else {
+      setError(true)
     }
   };
 
@@ -112,26 +121,25 @@ function Publish ({handleToken, token}) {
       isDragReject
     ]);
 
-    console.log(picture)
-
     return (
       <div className="dropzone-wrapper">
         <div {...getRootProps({style})}>
           <input {...getInputProps()} />
-          {picture ?
-          <div>
-              <div className="dropzone-images"> 
-                  {picture ? picture.map(item => <img key={item.path} src={URL.createObjectURL(item)} alt="produit" />) : <></>}
+           {picture ?
+            <div>
+                <div className="dropzone-images"> 
+                    {picture ? picture.map(item => <img key={item.path} src={URL.createObjectURL(item)} alt="produit" />) : <></>}
 
-                  <div className="button button-with-icon button-secondary">
-                    <svg viewBox="0 0 16 16" width="16" height="16"><path d="M14 2v4.5H9.5l1.68-1.68A4.48 4.48 0 0 0 3.5 8a4.5 4.5 0 0 0 8.72 1.5h1.58a6 6 0 1 1-1.57-5.73L14 2z"></path></svg>                  </div>
-                  </div> 
-          </div>:
-          <div className="button button-with-icon button-secondary">
-              <svg viewBox="0 0 24 24" width="24" height="24"><path d="M20 11.25h-7.25V4h-1.5v7.25H4v1.5h7.25V20h1.5v-7.25H20z"></path></svg>
-              <span> Ajoute des photos </span>
-          </div>
-          }
+                    <div className="button button-with-icon button-secondary">
+                      <svg viewBox="0 0 16 16" width="16" height="16"><path d="M14 2v4.5H9.5l1.68-1.68A4.48 4.48 0 0 0 3.5 8a4.5 4.5 0 0 0 8.72 1.5h1.58a6 6 0 1 1-1.57-5.73L14 2z"></path></svg>                  </div>
+                    </div> 
+            </div>:
+            <div className="button button-with-icon button-secondary">
+                <svg viewBox="0 0 24 24" width="24" height="24"><path d="M20 11.25h-7.25V4h-1.5v7.25H4v1.5h7.25V20h1.5v-7.25H20z"></path></svg>
+                <span> Ajoute des photos </span>
+            </div>
+            }
+            {error ? <span className="error">Aucune photo ajoutée</span> : <></> }
         </div> 
       </div>
     );
@@ -148,7 +156,6 @@ function Publish ({handleToken, token}) {
 
                 <DropZone/>
 
-                
                 <label>Titre
                 <input
                   type="text"
@@ -157,7 +164,9 @@ function Publish ({handleToken, token}) {
                   onChange={(event) => {
                     setTitle(event.target.value);
                   }}
-                /></label>
+                />
+                {error ? title.length == 0 ?<span className="error">Titre : doit être renseigné</span> : <></> : <></>}
+                </label>
                 <label> Description
                 <textarea
                   rows={6}
@@ -167,7 +176,9 @@ function Publish ({handleToken, token}) {
                   onChange={(event) => {
                     setDescription(event.target.value);
                   }}
-                /></label>
+                />
+                {error ? description.length == 0 ?<span className="error">Description : doit être renseigné</span> : <></> : <></>}
+                </label>
                 <label>Marque
                 <input
                   type="text"
@@ -176,7 +187,9 @@ function Publish ({handleToken, token}) {
                   onChange={(event) => {
                     setBrand(event.target.value);
                   }}
-                /></label>
+                />
+                {error ? brand.length == 0 ?<span className="error">Marque : doit être renseigné</span> : <></> : <></>}
+                </label>
                 <label>Taille
                 <input
                   type="text"
@@ -185,7 +198,9 @@ function Publish ({handleToken, token}) {
                   onChange={(event) => {
                     setSize(event.target.value);
                   }}
-                /></label>
+                />
+                {error ? size.length == 0 ?<span className="error">Taille : doit être renseigné</span> : <></> : <></>}
+                </label>
                 <label>Couleur
                 <input
                   type="text"
@@ -194,7 +209,9 @@ function Publish ({handleToken, token}) {
                   onChange={(event) => {
                     setColor(event.target.value);
                   }}
-                /></label>
+                />
+                {error ? color.length == 0 ?<span className="error">Couleur : doit être renseigné</span> : <></> : <></>}
+                </label>
                 <label>Condition
                 <input
                   type="text"
@@ -203,7 +220,8 @@ function Publish ({handleToken, token}) {
                   onChange={(event) => {
                     setCondition(event.target.value);
                   }}
-                /></label>
+                />{error ? condition.length == 0 ?<span className="error">Condition : doit être renseigné</span> : <></> : <></>}
+                </label>
                 <label>Ville
                 <input
                   type="text"
@@ -212,7 +230,8 @@ function Publish ({handleToken, token}) {
                   onChange={(event) => {
                     setCity(event.target.value);
                   }}
-                /></label>
+                />{error ? city.length == 0 ?<span className="error">Ville : doit être renseigné</span> : <></> : <></>}
+                </label>
                 <label>Prix
                 <input
                   type="number"
@@ -221,7 +240,8 @@ function Publish ({handleToken, token}) {
                   onChange={(event) => {
                     setPrice(event.target.value);
                   }}
-                /></label>
+                />{error ? price.length == 0 ?<span className="error">Prix : doit être renseigné</span> : <></> : <></>}
+                </label>
                 <button type="submit" value="Submit"  className="button button-primary">Ajouter</button> 
               </form>
 

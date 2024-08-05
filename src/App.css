@@ -699,8 +699,19 @@ h2 {
     align-items: center;
 }
 
+.dropzone-wrapper .error {
+   margin-top: 10px;
+}
+
 .dropzone-images img {
     max-width: 150px;
+}
+
+.publish-article .error {
+    color: #d46b6b;
+    line-height: 1.2em;
+    font-weight: 400;
+    font-size: 14px;
 }
 
 .button-with-icon {
@@ -938,7 +949,7 @@ h2 {
 .select-filter-modal {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
 }
 
 .select-filter-modal div label{
