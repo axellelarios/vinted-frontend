@@ -1,7 +1,8 @@
 
 import { Range, getTrackBackground } from "react-range";
+import React, { useState, useEffect } from "react";
 
-const Filters = ({price, setPrice}) => {
+const Filters = ({price, setPrice, sort, setSort}) => {
 
   const Step = 1;
   const Min = 0;
@@ -13,6 +14,16 @@ const Filters = ({price, setPrice}) => {
     price = values
     setPrice(price);
   };
+
+  const [select, setSelect] = useState({ isHidden: true });
+  const style = { visibility: select.isHidden ? 'hidden' : 'visible' };
+
+  const handleChange = (event) => {
+    const value = event.target.value;
+    setSort(value);
+  };
+
+  console.log(sort)
 
   return (
     <div className="container">
@@ -102,7 +113,31 @@ const Filters = ({price, setPrice}) => {
           </div>
         </div>
         <div className="filters-right">
-            
+            <div className="position-relative">
+                  <button onClick={()=>{setSelect({ isHidden: !select.isHidden })}} className="select-filter button">Trier par</button>
+                  <div style={style} className="select-filter-modal"> 
+                      <div>
+                        <label>
+                          Pertinence
+                          <input name="sort" type="radio" onChange={handleChange} value="pertinence" />
+                        </label> 
+                      </div>   
+
+                      <div>
+                        <label>
+                          Prix croissant
+                          <input name="sort" type="radio" onChange={handleChange} value="price-asc" />
+                        </label>
+                      </div>     
+
+                      <div>
+                        <label>
+                          Prix décroissant
+                          <input name="sort" type="radio" onChange={handleChange} value="price-desc" />
+                        </label>
+                      </div>
+                  </div>
+            </div>
         </div>
       </div>
     </div>

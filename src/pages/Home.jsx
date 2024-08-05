@@ -10,7 +10,7 @@ import Filters from "../components/Filters"
 import banner from '../assets/banner.jpg'
 import tear from '../assets/tear.f7439053.svg' 
 
-function Home({ price, setPrice, search, priceOrder}) {
+function Home({ price, sort, setSort, setPrice, search, priceOrder}) {
     // On initialise data comme null
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +21,7 @@ function Home({ price, setPrice, search, priceOrder}) {
         try {
           // On appelle notre requete avec les filtres
           const response = await axios.get(
-            `https://site--backend-vinted--z96jrv9g2mbz.code.run/offers?title=${search}&priceMin=${price[0]}&priceMax=${price[1]}`
+            `https://site--backend-vinted--z96jrv9g2mbz.code.run/offers?title=${search}&priceMin=${price[0]}&priceMax=${price[1]}&sort=${sort}`
           );
           // On envoie les données à note state SetData
           setData(response.data); 
@@ -33,7 +33,7 @@ function Home({ price, setPrice, search, priceOrder}) {
       };
       fetchData();
        // on oublie pas de mettre nos dépendances pour que Useeffect garde un oeil sur leur changement
-    }, [price, search, priceOrder]); 
+    }, [price, search, sort, priceOrder]); 
 
     return isLoading ? (
        <main className="loading">
@@ -49,7 +49,7 @@ function Home({ price, setPrice, search, priceOrder}) {
                     <img src={tear} />
                 </div>                
             </section>
-            <Filters price={price} setPrice={setPrice} />
+            <Filters sort={sort} setSort={setSort} price={price} setPrice={setPrice} />
             <section className="offers">
               <div className="container">
                   <div className="offers-content u-flexbox u-flex-wrap">  

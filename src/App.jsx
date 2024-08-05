@@ -56,14 +56,15 @@ function App() {
 
   // Creation d'un state pour ma barre de recherche
   const [search, setSearch] = useState("");
+  const [sort, setSort] = useState("");
   const [price, setPrice] = useState([0, 200]);
   const [priceOrder, setPriceOrder] = useState("");
 
   return  (
     <Router>
-      <Header handleSession={handleSession} session={session} handleToken={handleToken} user={user} token={token} logo={logo} search={search} setSearch={setSearch}  />
+      <Header handleSession={handleSession} session={session} handleToken={handleToken} user={user} token={token} logo={logo} sort={sort} setSort={setSort} search={search} setSearch={setSearch}  />
       <Routes>
-        <Route path="/" element={<Home setPriceOrder={setPriceOrder} priceOrder={priceOrder} search={search} setSearch={setSearch} price={price} setPrice={setPrice} />} />
+        <Route path="/" element={<Home setPriceOrder={setPriceOrder} sort={sort} setSort={setSort} priceOrder={priceOrder} search={search} setSearch={setSearch} price={price} setPrice={setPrice} />} />
         <Route path="/offer/:id" element={<Product token={token} />} />
         <Route path="/payment/" element={<Payment token={token} />} />
         <Route path="/login" element={<Login handleSession={handleSession} session={session}  handleToken={handleToken} setUser={setUser} token={token} user={user} />} />
