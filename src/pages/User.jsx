@@ -55,16 +55,16 @@ const User = ({session}) => {
                 </div>
 
                 <div className="martop-20 offers-content u-flexbox u-flex-wrap">  
-                    <div className="offer-wrapper"> 
+                    
                      {
                      user.offers.length > 0 ? 
                      user.offers.map((offer) => { 
                         console.log(offer)    
-                        return <Offers key={offer._id} offer={offer} /> 
+                        return <div className="offer-wrapper"> <Offers  offer={offer} /></div> 
                      })
                      : <div className="no-result">Pas de résultats.</div>
                      }
-                     </div>
+                     
                 </div>
 
           </div>
