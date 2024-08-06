@@ -216,6 +216,11 @@ h2 {
     border: 1px solid #f2f2f2;
     padding: 10px 20px 10px 42px;
     background-color: #f2f2f2;
+    font-size: 16px;
+}
+
+.header__search svg path {
+    fill: grey;
 }
 
 .header__right .button.button-primary {
