@@ -79,6 +79,22 @@ a {
 
 @keyframes web_ui__Loader__stroke-large{0%{stroke-dashoffset:70.7142857143}50%{stroke-dashoffset:7.8571428571}to{stroke-dashoffset:70.7142857143}}
 
+.martop-10 {
+    margin-top: 10px;
+}
+
+.martop-20 {
+    margin-top: 20px;
+}
+
+.martop-40 {
+    margin-top: 40px;
+}
+
+.martop-80 {
+    margin-top: 40px;
+}
+
 /*** FLEXBOX **/
 
 .u-align-items-center {

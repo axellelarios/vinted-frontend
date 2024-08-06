@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Offers from "../components/Offers"
 
 const User = ({session}) => { 
     const { id } = useParams();
@@ -15,8 +16,7 @@ const User = ({session}) => {
                 const response = await axios.get(
                 `https://site--backend-vinted--z96jrv9g2mbz.code.run/user/${id}` 
                 );
-                // On envoie les données à note state SetOffer
-                console.log(response.data)
+
                 setUser(response.data); 
             } catch (error) {
                 console.log("this is an error >> " + error.response);
@@ -53,6 +53,20 @@ const User = ({session}) => {
                                }
                     </div>              
                 </div>
+
+                <div className="martop-20 offers-content u-flexbox u-flex-wrap">  
+                    <div className="offer-wrapper"> 
+                     {
+                     user.offers.length > 0 ? 
+                     user.offers.map((offer) => { 
+                        console.log(offer)    
+                        return <Offers key={offer._id} offer={offer} /> 
+                     })
+                     : <div className="no-result">Pas de résultats.</div>
+                     }
+                     </div>
+                </div>
+
           </div>
         </main>
     )

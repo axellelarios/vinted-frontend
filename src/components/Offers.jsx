@@ -4,9 +4,10 @@ export default function OfferCard ({offer}) {
 
         return (
                 <div className="card-item">
+                    { offer.owner.account ?
                     <Link to={`/user/${offer.owner._id}`} className="card-header u-flexbox u-align-items-center">
 
-                        { offer.owner.account.avatar ?
+                         { offer.owner.account.avatar ?
                          <span><img src={offer.owner.account.avatar.secure_url} /></span> :
                          <div className="user-no-picture">{Array.from(offer.owner.account.username)[0]}</div>
                          }
@@ -14,6 +15,7 @@ export default function OfferCard ({offer}) {
                         <div className="card-username">{offer.owner.account.username}</div>
 
                     </Link>
+                    : <></> }
                     <Link to={`/offer/${offer._id}`} className="card-image">
 
                        {offer.product_image.length > 1 ?    
